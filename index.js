@@ -9,7 +9,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); //key=value&key=value
 app.use(express.static('public'));
 app.use(helmet());
-app.use(morgan('tiny'));
+
+if (app.get('env') === 'development') {
+    console.log('Morgan is enabled');
+    // process.env.NODE_ENV
+    app.use(morgan('tiny'));
+};
 
 app.use(logger);
 
@@ -92,7 +97,7 @@ function validateCourse(course) {
 };
 
 // PORT
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 app.listen(port, () => {
     console.log(`Listening on port ${port}...`);
 });
