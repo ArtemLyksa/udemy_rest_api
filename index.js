@@ -1,4 +1,6 @@
 const Joi = require('joi');
+const helmet = require('helmet');
+const morgan = require('morgan');
 const logger = require('./logger');
 const express = require('express');
 const app = express();
@@ -6,6 +8,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); //key=value&key=value
 app.use(express.static('public'));
+app.use(helmet());
+app.use(morgan('tiny'));
 
 app.use(logger);
 
@@ -88,7 +92,7 @@ function validateCourse(course) {
 };
 
 // PORT
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 app.listen(port, () => {
     console.log(`Listening on port ${port}...`);
 });

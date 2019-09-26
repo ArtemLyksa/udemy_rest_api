@@ -19,6 +19,8 @@
   "homepage": "https://github.com/ArtemLyksa/udemy_rest_api#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "joi": "^14.3.1"
+    "helmet": "^3.21.1",
+    "joi": "^14.3.1",
+    "morgan": "^1.9.1"
   }
 }
