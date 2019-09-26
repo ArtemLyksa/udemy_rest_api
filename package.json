@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ArtemLyksa/udemy_rest_api#readme",
   "dependencies": {
     "config": "^3.2.2",
+    "debug": "^4.1.1",
     "express": "^4.17.1",
     "helmet": "^3.21.1",
     "joi": "^14.3.1",

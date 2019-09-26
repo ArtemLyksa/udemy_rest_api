@@ -1,6 +1,7 @@
 const config = require('config');
 const Joi = require('joi');
 const helmet = require('helmet');
+const debug = require('debug')('app:startup');
 const morgan = require('morgan');
 const logger = require('./logger');
 const express = require('express');
@@ -12,19 +13,20 @@ app.use(express.static('public'));
 app.use(helmet());
 
 //Configuration
-console.log(`Application name: ${ config.get('name') }`);
-console.log(`Mail Server: ${ config.get('mail.host') }`);
-console.log(`Mail Password: ${ config.get('mail.password') }`);
+console.log(`Application name: ${config.get('name')}`);
+console.log(`Mail Server: ${config.get('mail.host')}`);
+console.log(`Mail Password: ${config.get('mail.password')}`);
 
 if (app.get('env') === 'development') {
-    console.log('Morgan is enabled');
+    // console.log('Morgan is enabled');
     // process.env.NODE_ENV
+    debug('Morgan is enabled');
     app.use(morgan('tiny'));
 };
 
 app.use(logger);
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     console.log('Authenticating...');
     next();
 });
