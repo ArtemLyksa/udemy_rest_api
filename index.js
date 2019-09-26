@@ -22,7 +22,7 @@ app.use('/', home);
 //Configuration
 console.log(`Application name: ${config.get('name')}`);
 console.log(`Mail Server: ${config.get('mail.host')}`);
-console.log(`Mail Password: ${config.get('mail.password')}`);
+// console.log(`Mail Password: ${config.get('mail.password')}`);
 
 if (app.get('env') === 'development') {
     // console.log('Morgan is enabled');
